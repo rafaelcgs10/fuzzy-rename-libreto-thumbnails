@@ -14,3 +14,9 @@ This script works recusivally in the directory.
 So if you have a `roms` folder centralizing all your roms and it has subdirectories, you should have no problem.
 
 Don't worry, the script will prompt a question before start renaming files.
+
+To update the `games_list` file run:
+
+```
+scrapy runspider spyder.py
+```
