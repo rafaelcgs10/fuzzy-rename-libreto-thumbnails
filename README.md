@@ -5,7 +5,7 @@ This a small collection of Python scripts to rename your games based on files na
 All you have to do is run
 
 ```
-python rename
+python rename.py
 ```
 
 on the games folder.
