@@ -1,5 +1,5 @@
-# Fuzzy Rename Libreto Thumbnails
-This a small collection of Python scripts to rename your games based on file names for the box arts in the Libreto repository.
+# Fuzzy Rename Libretro Thumbnails
+This a small collection of Python scripts to rename your games based on file names for the box arts in the Libretro repository.
 
 
 All you have to do is run
@@ -26,7 +26,7 @@ scrapy runspider spyder.py
 
 Yes, you can easily run this on Window!
 
-Just go to the [releases](https://github.com/rafaelcgs10/fuzzy-rename-libreto-thumbnails/releases) section and download the last Windows build.
+Just go to the [releases](https://github.com/rafaelcgs10/fuzzy-rename-libretro-thumbnails/releases) section and download the last Windows build.
 
 To run in Windows all you have to do is to extract the zip file and copy all its content to the folder where your roms are, then just run de binary.
 Remember, this program scans everything recursively, so to avoid long scans put this in a directory that doesn't have too many sub-directories.
