@@ -5,7 +5,7 @@ This a small collection of Python scripts to rename your games based on file nam
 All you have to do is run
 
 ```
-python rename.py games_list/Nintendo\ -\ GameCube.txt
+python rename.py games_lists/Nintendo\ -\ GameCube.txt
 ```
 
 with these files in the games folder.
