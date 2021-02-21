@@ -7,7 +7,7 @@ import re
 
 games = []
 
-with open('games_list.txt') as f:
+with open(sys.argv[1]) as f:
   games_list = f.readlines()
 
 for game in games_list:
@@ -34,14 +34,20 @@ def rename(name, file_extension, subdirectory_path, count):
     count = count + 1
   return count
 
-blacklist_folders = ['.mypy_cache', '.git']
-blacklist_files = ['rename.py', 'spyder.py', 'games_list.txt', 'requirements.txt', '.gitignore', 'README.md']
+blacklist_folders = ['.mypy_cache', '.git', 'games_list']
+blacklist_files = ['rename.py', 'spyder.py', 'requirements.txt', '.gitignore', 'README.md']
+
+# FIXME: extract the code bellow to functions
+
+# RENAMING FOLDERS HERE
+
+print("First we will rename folders, then second we will rename files\n")
+print("Checking folders to rename\n")
 
 map_to_rename = {}
 array_to_rename = []
 
 count = 0
-
 for subdir, dirs, files in os.walk(directory):
   contains = False
   for blacklist_folder in blacklist_folders:
@@ -53,6 +59,37 @@ for subdir, dirs, files in os.walk(directory):
     if dirr in blacklist_folders:
       continue
     count = rename(dirr, "", subdir, count)
+
+if array_to_rename:
+  skips = input("Please enter the numbers separeted by spaces of the renames that you wish to skip! Or enter -1 to rename nothing. Or just hit enter to apply all renames.\n")
+
+if array_to_rename and skips == '-1':
+  exit()
+
+if array_to_rename and skips:
+  for skip in skips.split(' '):
+    i = int(skip)
+    key = array_to_rename[i]
+    map_to_rename.pop(key)
+
+for key in map_to_rename:
+  os.rename(key, map_to_rename[key])
+#
+# RENAMING FILES HERE
+
+print("Checking files to rename\n")
+
+map_to_rename = {}
+array_to_rename = []
+
+count = 0
+for subdir, dirs, files in os.walk(directory):
+  contains = False
+  for blacklist_folder in blacklist_folders:
+    if blacklist_folder in subdir:
+      contains = True
+  if contains:
+    continue
   for full_filename in files:
     if full_filename in blacklist_files:
       continue
@@ -60,8 +97,7 @@ for subdir, dirs, files in os.walk(directory):
     count = rename(filename, file_extension, subdir, count)
 
 if array_to_rename:
-  print("Please enter the numbers separeted by spaces of the renames that you wish to skip! Or enter -1 to rename nothing. Or just hit enter to apply all renames.")
-  skips = input()
+  skips = input("Please enter the numbers separeted by spaces of the renames that you wish to skip! Or enter -1 to rename nothing. Or just hit enter to apply all renames.\n")
 
 if array_to_rename and skips == '-1':
   exit()

@@ -5,17 +5,18 @@ This a small collection of Python scripts to rename your games based on file nam
 All you have to do is run
 
 ```
-python rename.py
+python rename.py games_list/Nintendo\ -\ GameCube.txt
 ```
 
-on the games folder.
+with these files in the games folder.
 
-This script works recursively in the directory.
-So if you have a `roms` folder centralizing all your roms and it has subdirectories, you should have no problem.
+Don't forget to give `.txt` of which console you are renaming.
+
+This script works recursively in the directory tree.
 
 Don't worry, the script will prompt a question before start renaming files.
 
-To update the `games_list` file run:
+To update the `games_list` folder run:
 
 ```
 scrapy runspider spyder.py
