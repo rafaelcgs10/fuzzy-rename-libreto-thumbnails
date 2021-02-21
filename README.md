@@ -10,7 +10,7 @@ python rename.py games_list/Nintendo\ -\ GameCube.txt
 
 with these files in the games folder.
 
-Don't forget to give `.txt` of which console you are renaming.
+Don't forget to give the `.txt` file of which console you are renaming.
 
 This script works recursively in the directory tree.
 
