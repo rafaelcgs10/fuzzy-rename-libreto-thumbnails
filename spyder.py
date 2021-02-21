@@ -1,7 +1,6 @@
 import urllib.parse
 import scrapy
 import os
-import pdb
 import re
 
 class RetroSpider(scrapy.Spider):
@@ -24,7 +23,6 @@ class RetroSpider(scrapy.Spider):
     type_art = response.xpath('//pre/a/@href').extract()[1]
     url = response.urljoin(type_art)
     yield scrapy.Request(url=url, callback=self.parse_console)
-
 
   def parse_console(self, response):
     names_enconded = response.xpath('//pre/a/@href').extract()

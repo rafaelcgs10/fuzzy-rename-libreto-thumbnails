@@ -64,7 +64,6 @@ if array_to_rename:
   print("Please enter the numbers separeted by spaces of the renames that you wish to skip! Or enter -1 to rename nothing. Or just hit enter to apply all renames.")
   skips = input()
 
-
 if array_to_rename and skips == '-1':
   exit()
 
