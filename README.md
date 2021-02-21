@@ -30,3 +30,5 @@ Just go to the [releases](https://github.com/rafaelcgs10/fuzzy-rename-libreto-th
 
 To run in Windows all you have to do is to extract the zip file and copy all its content to the folder where your roms are, then just run de binary.
 Remember, this program scans everything recursively, so to avoid long scans put this in a directory that doesn't have too many sub-directories.
+
+The Windows build is made using pyinstaller. That is why the binary is so fat.
