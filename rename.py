@@ -1,6 +1,5 @@
 import os
 import sys
-import csv
 from fuzzywuzzy import fuzz
 from fuzzywuzzy import process
 import re
