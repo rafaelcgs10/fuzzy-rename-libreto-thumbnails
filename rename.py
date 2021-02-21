@@ -20,9 +20,9 @@ def rename(name, file_extension, subdirectory_path, count):
   highest = process.extractOne(name, games)
 
   if highest[1] == 100:
-    return
+    return count
   if highest[1] >= 90:
-    full_filename = os.path.join(name, file_extension)
+    full_filename = name + file_extension
     file_path_old = os.path.join(subdirectory_path, full_filename)
 
     new_file_name = highest[0] + file_extension
@@ -30,7 +30,7 @@ def rename(name, file_extension, subdirectory_path, count):
 
     map_to_rename[file_path_old] = file_path_new
     array_to_rename.append(file_path_old)
-    print(count, ") ", file_path_old , "------>", map_to_rename[file_path_old], "score:", highest[1])
+    print(count, ") ", file_path_old , "------>", map_to_rename[file_path_old])
     count = count + 1
   return count
 
@@ -56,9 +56,8 @@ for subdir, dirs, files in os.walk(directory):
   for full_filename in files:
     if full_filename in blacklist_files:
       continue
-    subdirectory_path = os.path.relpath(directory, dirr)
     filename, file_extension = os.path.splitext(full_filename)
-    count = rename(filename, file_extension, subdirectory_path, count)
+    count = rename(filename, file_extension, subdir, count)
 
 if array_to_rename:
   print("Please enter the numbers separeted by spaces of the renames that you wish to skip! Or enter -1 to rename nothing. Or just hit enter to apply all renames.")
