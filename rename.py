@@ -16,11 +16,6 @@ for game in games_list:
 
 directory = os.path.dirname(os.path.realpath(sys.argv[0]))
 
-map_to_rename = {}
-array_to_rename = []
-
-count = 0
-
 def rename(full_filename, current_directory, count):
   filename, file_extension = os.path.splitext(full_filename)
 
@@ -40,9 +35,15 @@ def rename(full_filename, current_directory, count):
     array_to_rename.append(file_path_old)
     print(count, ") ", file_path_old , "------>", map_to_rename[file_path_old], "score:", highest[1])
     count = count + 1
+  return count
 
 blacklist_folders = ['.mypy_cache', '.git']
 blacklist_files = ['rename.py', 'spyder.py', 'games_list.txt', 'requirements.txt', '.gitignore']
+
+map_to_rename = {}
+array_to_rename = []
+
+count = 0
 
 for subdir, dirs, files in os.walk(directory):
   contains = False
@@ -54,11 +55,11 @@ for subdir, dirs, files in os.walk(directory):
   for directory in dirs:
     if directory in blacklist_folders:
       continue
-    rename(directory, subdir, count)
+    count = rename(directory, subdir, count)
   for full_filename in files:
     if full_filename in blacklist_files:
       continue
-    rename(full_filename, subdir, count)
+    count = rename(full_filename, subdir, count)
 
 if array_to_rename:
   print("Please enter the numbers separeted by spaces of the renames that you wish to skip! Or enter -1 to rename nothing. Or just hit enter to apply all renames.")
