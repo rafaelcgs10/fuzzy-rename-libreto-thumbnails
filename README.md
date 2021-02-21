@@ -16,7 +16,7 @@ This script works recursively in the directory tree.
 
 Don't worry, the script will prompt a question before start renaming files.
 
-To update the `games_list` folder run:
+To update the `games_lists` folder run:
 
 ```
 scrapy runspider spyder.py

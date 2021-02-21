@@ -7,8 +7,24 @@ import re
 
 games = []
 
-with open(sys.argv[1]) as f:
-  games_list = f.readlines()
+if len(sys.argv) > 1:
+  with open(sys.argv[1]) as f:
+    games_list = f.readlines()
+else:
+  consoles = []
+  consoles_files = os.listdir('games_lists')
+  consoles_files.sort()
+  for console_file in consoles_files:
+    console = re.sub('\.txt', '', console_file)
+    consoles.append(console)
+  count = 0
+  for console in consoles:
+    print(count, " - ", console)
+    count = count + 1
+  print("Enter the number of the console that you wish to execute the rename:")
+  selected = int(input())
+  with open('games_lists/' + consoles[selected] + '.txt') as f:
+    games_list = f.readlines()
 
 for game in games_list:
   game_clean = re.sub('\n', '', game)
@@ -34,14 +50,14 @@ def rename(name, file_extension, subdirectory_path, count):
     count = count + 1
   return count
 
-blacklist_folders = ['.mypy_cache', '.git', 'games_list']
+blacklist_folders = ['.mypy_cache', '.git', 'games_lists']
 blacklist_files = ['rename.py', 'spyder.py', 'requirements.txt', '.gitignore', 'README.md']
 
 # FIXME: extract the code bellow to functions
 
 # RENAMING FOLDERS HERE
 
-print("First we will rename folders, then second we will rename files\n")
+print("First we will rename folders and after we will rename files\n")
 print("Checking folders to rename\n")
 
 map_to_rename = {}

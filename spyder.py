@@ -25,7 +25,7 @@ class RetroSpider(scrapy.Spider):
 
   def parse_console(self, response):
     console = response.meta['console']
-    file_name = 'games_list/' + console + '.txt'
+    file_name = 'games_lists/' + console + '.txt'
     open(file_name, 'w')
     names_enconded = response.xpath('//pre/a/@href').extract()
     if names_enconded:
